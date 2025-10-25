@@ -1,36 +1,42 @@
-package dev_week.com.pass_in.domain.event;
+package dev_week.com.pass_in.domain.attendees;
 
+import java.time.LocalDateTime;
+
+import dev_week.com.pass_in.domain.event.Event;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "events")
+@Table(name = "attendees")
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class Event {
+public class Attendee {
+
     @Id
-    @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
+    
+    @Column(nullable = false)
+    private String name;
 
     @Column(nullable = false)
-    private String title;
+    private String email;
 
-    @Column(nullable = false)
-    private String details;
+    @ManyToOne
+    @JoinColumn(name = "event_id", nullable = false)
+    private Event event;
 
-    @Column(nullable = false, unique = true)
-    private String slug;
-
-    @Column(nullable = false, name = "maximum_attendees")
-    private Integer maximumAttendees;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
     
 }
