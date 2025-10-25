@@ -1,4 +1,4 @@
-package dev_week.com.pass_in.domain.event;
+package dev_week.com.pass_in.domain.entity.event;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

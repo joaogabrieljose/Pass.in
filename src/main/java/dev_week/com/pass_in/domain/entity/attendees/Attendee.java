@@ -1,8 +1,8 @@
-package dev_week.com.pass_in.domain.attendees;
+package dev_week.com.pass_in.domain.entity.attendees;
 
 import java.time.LocalDateTime;
 
-import dev_week.com.pass_in.domain.event.Event;
+import dev_week.com.pass_in.domain.entity.event.Event;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
