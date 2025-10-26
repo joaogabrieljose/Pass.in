@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev_week.com.pass_in.useCase.eventUseCase.EventUseCaseCreate;
+import dev_week.com.pass_in.dto.dtoEvent.EventResponseDTO;
+import dev_week.com.pass_in.useCase.eventUseCase.EventUseCaseGet;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -14,13 +15,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class EventController {
 
-    private final  EventUseCaseCreate eventeUseCase;
+    private final  EventUseCaseGet eventeUseCase;
 
     @GetMapping("{eventId}")
-    public ResponseEntity<?> getEvent(@PathVariable String eventId){
-
-        this.eventeUseCase.getEventDetail(eventId);
-        return ResponseEntity.ok().body("sucesso");
+    public ResponseEntity<EventResponseDTO> getEvent(@PathVariable String eventId){
+        EventResponseDTO response = this.eventeUseCase.getEventDetail(eventId);
+        return ResponseEntity.ok(response);
     }
    
     
